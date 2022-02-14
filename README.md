@@ -1,20 +1,41 @@
 # Chat App with Nextron JS
 
-- css 적용 사항 reset css / emotion을 통한 개별 컴포넌트 작성
+### 사용한 라이브러리
 
-- 구성화면 (모바일 & 데스크탑)
-  - [x] 회원가입
-  - [x] 랜딩페이지/로그인
-  - [x] 유저 목록
-  - [ ] 채팅 화면
-    - [ ] 1:1 채팅
-    - [ ] 그룹 채팅
+- redux toolkit
+- react hook from
+- react-responsive
+- react-redux
+- emotion
 
-- 컴포넌트
-  - [x] 유저 컴포넌트
-  - [x] 아이콘 컴포넌트
+### 기능 구현 사항
 
-- 기능 구현 사항
-  - [ ] 회원가입
-  - [ ] 로그인
-  - [ ] 친구 추가
+**회원가입/ 로그인 관련**
+
+- [x] 회원가입
+
+  - [x] Google Authetication
+    - [ ] Email 인증
+  - [x] Firebase 저장
+
+- [x] 로그인
+  - [ ] 로그인 유지 (세션)
+
+**유저 관련**
+
+- [x] 유저 리스트
+
+  - [ ] 친구 추가 후 정보 받아서 dispatch
+
+- [x] 친구 검색
+
+  - [x] Firebase Query 작성
+
+- [x] 친구 추가
+
+**채팅관련**
+
+- [ ] 1:1 채팅
+  - [x] Firestore에 채팅방 만들기
+  - [ ] User에 반영하기
+- [ ] 그룹 채팅

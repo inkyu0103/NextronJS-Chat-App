@@ -1,14 +1,22 @@
 import styled from "@emotion/styled";
+import { useSelector } from "react-redux";
 import { COLOR } from "../../constants/color";
+import { RootState } from "../../redux/store";
+import ChatService from "../../repository/ChatService";
 
 interface UserInterface {
+  email?: string;
   userName: string;
   userImageUrl: string;
 }
 
-export default function User({ userName, userImageUrl }: UserInterface) {
+export default function User({ email, userName, userImageUrl }: UserInterface) {
+  const myEmail = useSelector((state: RootState) => state.email);
+  const handleDubleClick = async () => {
+    await ChatService.createChatRoom(myEmail, email);
+  };
   return (
-    <UserContainer>
+    <UserContainer onDoubleClick={handleDubleClick}>
       <UserImage src={userImageUrl} />
       <UserNameContainer>{userName}</UserNameContainer>
     </UserContainer>

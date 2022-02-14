@@ -6,13 +6,14 @@ interface IconInterface {
 }
 
 export default function Icon({ iconImageUrl, handleClick }: IconInterface) {
-  return (
-    <IconContainer>
-      <IconButton onClick={handleClick} />
-    </IconContainer>
-  );
+  return <IconButton iconImageUrl={iconImageUrl} onClick={handleClick} />;
 }
 
-const IconContainer = styled.section``;
-
-const IconButton = styled.button``;
+const IconButton = styled.button<{ iconImageUrl: string }>`
+  width: 16px;
+  height: 16px;
+  background: transparent;
+  background-image: ${({ iconImageUrl }) => `url(${iconImageUrl})`};
+  background-size: cover;
+  cursor: pointer;
+`;
