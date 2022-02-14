@@ -2,13 +2,19 @@ import styled from "@emotion/styled";
 import Logo from "./Logo";
 import { COLOR } from "../../constants/color";
 import { useForm } from "react-hook-form";
+import Link from "next/link";
 
 interface LoginFormInterface {
-  onSubmit: () => void;
+  onSubmit: (data: any) => void;
   message: string;
+  isLogin?: boolean;
 }
 
-export default function LoginForm({ onSubmit, message }: LoginFormInterface) {
+export default function LoginForm({
+  onSubmit,
+  message,
+  isLogin = false,
+}: LoginFormInterface) {
   const { register, handleSubmit } = useForm();
   return (
     <InputContainer>
@@ -26,8 +32,14 @@ export default function LoginForm({ onSubmit, message }: LoginFormInterface) {
           required
           {...register("password", { required: true })}
         />
+
         <LoginButton type="submit">{message}</LoginButton>
       </SignupForm>
+      {isLogin && (
+        <p>
+          아직 계정이 없으신가요?<Link href="/join">가입하세요</Link>
+        </p>
+      )}
     </InputContainer>
   );
 }
@@ -69,4 +81,10 @@ const LoginButton = styled.button`
   background-color: ${COLOR.blue2};
   cursor: pointer;
   color: white;
+`;
+
+const UserNameInput = styled.input`
+  width: 100%;
+  height: 30px;
+  margin-top: 10px;
 `;
